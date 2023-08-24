@@ -34,9 +34,9 @@ namespace net_rpg.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> UpdateCharacter(AddCharacterDto newCharacter)
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> UpdateCharacter(UpdateCharacterDto updatedCharacter)
         {
-            var response = await _characterService.AddCharacter(newCharacter);
+            var response = await _characterService.UpdateCharacter(updatedCharacter);
             if (response.Data is null) return NotFound(response);
             return Ok(response);
         }
@@ -44,7 +44,7 @@ namespace net_rpg.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> DeleteCharacter(int id)
         {
-          var response = await _characterService.DeleteCharacter(id);
+            var response = await _characterService.DeleteCharacter(id);
             if (response.Data is null) return NotFound(response);
             return Ok(response);
         }

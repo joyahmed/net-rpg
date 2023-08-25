@@ -1,8 +1,11 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace net_rpg.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase
@@ -15,7 +18,6 @@ namespace net_rpg.Controllers
         }
 
         [HttpGet("GetAll")]
-
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> GetCharacters()
         {
             return Ok(await _characterService.GetAllCharacters());
